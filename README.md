@@ -1,6 +1,5 @@
 # Pengingat Jadwal Sholat untuk wilayah Purbalingga dan Sekitarnya
 
-# Tentang Aplikasi
 Pengingat Jadwal Sholat untuk wilayah Purbalingga dan Sekitarnya, berbasis HTML dan JavaScript
 untuk pengembangan selanjutnya akan terintegrasi dengan Twitter, Line dan Telegram.
 data waktu menggunakan JavaScript dari prayertimes.org

@@ -37,6 +37,8 @@ header {
     transition: all 0.3s ease-in-out;
 }
 
+
+
 /* Judul */
 h1 {
     font-size: 28px;
@@ -73,22 +75,30 @@ select {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    appearance: none;
+    appearance: none; /* Menghilangkan default styling */
 }
 
+/* Memperbaiki warna dropdown saat dibuka */
+select option {
+    background: #333; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    padding: 10px;
+}
+
+/* Hover dan Fokus */
 select:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.03);
 }
 
 select:focus {
     border-color: #ffffff;
     outline: none;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
+
 
 /* Tombol */
 button {

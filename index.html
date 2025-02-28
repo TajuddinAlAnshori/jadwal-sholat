@@ -1,124 +1,48 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <head>
-    <meta charset="utf-8">
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portal Site of Dhimaz Roby Satrio">
-    <meta name="author" content="Dhimaz Roby Satrio">
-    <link rel="shortcut icon" href="panel/D.ico">
+    <title>Jadwal Sholat & Kalender Hijriyah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Waktu Sholat Seluruh Indonesia</h1>
+        <p id="tanggal-masehi"></p>
+        <p id="tanggal-hijriyah"></p>
+        <p id="jam-digital"></p>
+    </header>
 
-    <title>Jadwal Adzan</title>
+    <main>
 
-    <!-- Bootstrap core CSS -->
-    <link href="panel/css/bootstrap.css" rel="stylesheet">
+      <div class="container">
+        <h2>Jadwal Sholat</h2>
+        <label for="province">Pilih Provinsi:</label>
+        <select id="province" onchange="loadCities()"></select>
 
-    <!-- Custom styles for this template -->
-    <link href="panel/css/soon.css" rel="stylesheet">
+        <label for="city">Pilih Kota:</label>
+        <select id="city"></select>
 
+        <button onclick="getJadwal()">Cari Jadwal</button>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-    
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-	<style>
-		body, td, th { font-size: 14px; color: #ecf0f1;}
-		#timetable {border-width: 1px;  border-collapse: collapse; width: 9em;}
-		#timetable td, #timetable th {border-width: 1px; border-spacing: 1px; padding: 2px 4px; border-style: inset; border-color: #CCCCCC;}
-		#timetable th {color:black; text-align: center; background-color: #F8F7F4; opacity:0.9}
-	
-	</style>
-  </head>
-  <!-- START BODY -->
-  <body class="nomobile">
-      <!-- START HEADER -->
-    <section id="header" style="overflow: visible; height: 879px;">
-        <div class="container">
-            <header>
-                <!-- HEADLINE -->
-                <h1 data-animated="GoIn">Jadwal <b>Adzan</b> Otomatis</h1>
-            </header>
-			<h4 data-animated="GoIn" > berdasarkan Wilayah Kabupaten <b>Purbalingga</b></h4>
-<br>
-    <div data-animated="GoIn" align="center" id="table">
-	<table class="table table-bordered" id="tametable">
-	<tbody>
-	</tbody>
-	</table>
-	</div>	
-<div>
-<center>
-<br>
-<p>
-<a href="https://www.facebook.com/dhimazroby" target="_blank"><img alt="" data-animated="GoIn"src="panel/img/fbook.png" style="width: 68px; height: 68px;" /></a>&nbsp;&nbsp;
-<a href="http://instagram.com/dhimasroby" target="_blank"><img alt=""data-animated="GoIn" src="panel/img/insta.png" style="width: 68px; height: 68px;" />&nbsp;&nbsp;
-<a href="https://twitter.com/dhimazroby" target="_blank"><img alt=""data-animated="GoIn" src="panel/img/twttr.png" style="width: 68px; height: 68px;" /></a>&nbsp;&nbsp;
-<a href="https://www.youtube.com/user/dhimasroby/" target="_blank"><img alt="" src="panel/img/ytube.png" data-animated="GoIn"style="width: 68px; height: 68px;" />
-</a>
-</p>
-</center>
-</div>
-            
-        </div>
-        <!-- LAYER OVER THE SLIDER TO MAKE THE WHITE TEXTE READABLE -->
-        <div id="layer"></div>
-        <!-- END LAYER -->
-        <!-- START SLIDER -->
-        <div id="slider" class="rev_slider" class="rev_slider revslider-initialised tp-simpleresponsive" style="height: 100%;">
-            <ul style="display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;">
-              <li data-transition="slideleft" data-animated="GoIn" data-slotamount="1" data-thumb="panel/img/1.jpg">
-                <img src="panel/img/1.jpg">
-              </li>
-              <li data-transition="slideleft"data-animated="GoIn" data-slotamount="1" data-thumb="panel/img/2.jpg">
-                <img src="panel/img/2.jpg">
-              </li>
-              <li data-transition="slideleft" data-animated="GoIn" data-slotamount="1" data-thumb="panel/img/3.jpg">
-                <img src="panel/img/3.jpg">
-              </li>
-              <li data-transition="slideleft"data-animated="GoIn" data-slotamount="1" data-thumb="panel/img/4.jpg">
-                <img src="panel/img/4.jpg">
-                           </li>
-            </ul>
-        </div>
-        <!-- END SLIDER -->
-    </section>
-    <!-- END HEADER -->
+        <table id="jadwal-sholat">
+            <thead>
+                <tr>
+                    <th>Waktu</th>
+                    <th>Jam</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="panel/js/jquery.min.js"></script>
-    <script src="panel/js/modernizr.custom.js"  type="text/javascript" ></script>
-    <script src="panel/js/bootstrap.min.js"></script>
-    <script src="panel/js/plugins.js"></script>
-    <script src="panel/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="panel/js/custom.js"></script>
-	<script src="panel/js/PrayTimes.js"></script>
-	<script type="text/javascript">
-	
-		var date = new Date(); // today
-		var times = prayTimes.getTimes(date, [-7.385735, 109.360430], 7);
-		var subuh = times.Fajr;
-		var dzuhur = times.Dhuhr;
-		var ashar = times.Asr;
-		var maghrib = times.Maghrib;
-		var isya = times.Isha;
-		var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-		var aran = ['Subuh', 'Syuruq', 'Dzuhur', 'Ashar', 'Maghrib', 'Isya'];
+        
+        
+    </main>
 
-		var html = '<table id="timetable">';
-		html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
-		for(var i in list)	{
-			html += '<tr><td>'+ aran[i]+ '</td>';
-			html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
-		}
-		html += '</table>';
-		document.getElementById('table').innerHTML = html;
-		
-	</script>
-  </body>
-  <!-- END BODY -->
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>
